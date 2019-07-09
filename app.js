@@ -10,6 +10,9 @@ function main(){
     url: '/'},
     {name: 'Movies',
     url: '/movies'}
+    ,
+    {name: 'Movie Details',
+    url: '/movies/details'}
   ];
 
   generateLayout();

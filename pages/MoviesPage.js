@@ -4,13 +4,17 @@ function MoviesPage(parentElement) {
   this.parentElement = parentElement;
   this.elements = null;
   this.movies = null;
+  this.loading = null;
 }
 
 MoviesPage.prototype.generate = async function() {
+  this.loading = new Loading(this.parentElement);
+  this.loading.generate();
+
   await this.connectToAPI();
   this.elements = `
     <header>
-      <h2>Welcome to the mvoies page</h2>
+      <h2>Welcome to the movies page</h2>
     </header>
     <section class="cards-container">
   `;
