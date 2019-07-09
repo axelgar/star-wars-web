@@ -4,6 +4,7 @@ function main(){
   var ENTRY_POINT = '/';
   var layoutInstance = null;
   var navbarInstance = null;
+  var footerInstance = null;
   var rootElement = document.querySelector('#root');
   var links = [
     {name: 'Home',
@@ -17,6 +18,7 @@ function main(){
 
   generateLayout();
   generateNavbar();
+  generateFooter();
   addListenersToNavbar();
   activateRouter();
 
@@ -28,6 +30,11 @@ function main(){
   function generateNavbar() {
     navbarInstance = new Navbar(layoutInstance.header, links)
     navbarInstance.generate();
+  }
+
+  function generateFooter() {
+    footerInstance = new Footer(layoutInstance.footer)
+    footerInstance.generate();
   }
 
   function activateRouter() {

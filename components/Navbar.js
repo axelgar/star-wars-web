@@ -2,9 +2,9 @@
 
 function Navbar(parentElement, links, style) {
   this.parentElement = parentElement;
-  this.links = links;
-  this.style = style;
-  this.elements = null;
+  this.links         = links;
+  this.style         = style;
+  this.elements      = null;
 }
 
 Navbar.prototype.generate = function() {

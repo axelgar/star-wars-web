@@ -2,7 +2,7 @@
 
 function Loading(parentElement) {
   this.parentElement = parentElement;
-  this.elements = null;
+  this.elements      = null;
 }
 
 Loading.prototype.generate = function() {

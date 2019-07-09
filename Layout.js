@@ -1,12 +1,12 @@
 'use strict';
 
 function Layout(root, style) {
-  this.root = root;
-  this.style = style;
+  this.root     = root;
+  this.style    = style;
   this.elements = null;
-  this.header = null;
-  this.main = null;
-  this.footer = null;
+  this.header   = null;
+  this.main     = null;
+  this.footer   = null;
 }
 
 Layout.prototype.generate = function() {
@@ -15,6 +15,7 @@ Layout.prototype.generate = function() {
     <main id="site-main"></main>
     <footer id="site-footer"></footer>
   `;
+  
   this.render();
   this.getContainers();
 }

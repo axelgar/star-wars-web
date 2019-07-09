@@ -2,14 +2,13 @@
 
 function MoviesPage(parentElement) {
   this.parentElement = parentElement;
-  this.elements = null;
-  this.movies = null;
-  this.loading = null;
+  this.elements      = null;
+  this.movies        = null;
+  this.loading       = null;
 }
 
 MoviesPage.prototype.generate = async function() {
-  this.loading = new Loading(this.parentElement);
-  this.loading.generate();
+  this.generateLoading();
 
   await this.connectToAPI();
   this.elements = `
@@ -19,16 +18,11 @@ MoviesPage.prototype.generate = async function() {
     <section class="cards-container">
   `;
   this.movies.forEach((movie) => {
-    this.elements += `
-      <article>
-        <h3>${movie.title}</h3>
-        <p>${movie.release_date}</p>
-        <p>${movie.director}</p>
-        <p>${movie.opening_crawl}</p>
-      </article>
-    `;
+    var movieCard = new Card(movie);
+    this.elements += movieCard.generate();
   })
-  this.elements += '</section>'
+  this.elements += '</section>';
+
   this.render();
 }
 
@@ -38,4 +32,9 @@ MoviesPage.prototype.render = function() {
 
 MoviesPage.prototype.connectToAPI = async function() {
   this.movies = await starWarsServiceInstance.getAllMovies();
+}
+
+MoviesPage.prototype.generateLoading = function() {
+  this.loading = new Loading(this.parentElement);
+  this.loading.generate();
 }
