@@ -7,23 +7,18 @@ function Router() {
 Router.prototype.buildDom = function(url, parentElement) {
   switch (url) {
     case '/':
-      this.generateLandingPage(parentElement);
+      this.generatePage(parentElement, LandingPage);
       break;
     case '/movies':
-      this.generateMoviesPage(parentElement);
+      this.generatePage(parentElement, MoviesPage);
       break;
     default:
-      this.generateLandingPage(parentElement);
+      this.generatePage(parentElement, LandingPage);
   }
 }
 
-Router.prototype.generateLandingPage = function(parentElement) {
-  this.page = new LandingPage(parentElement);
-  this.page.generate();
-}
-
-Router.prototype.generateMoviesPage = function(parentElement) {
-  this.page = new MoviesPage(parentElement);
+Router.prototype.generatePage = function(parentElement, Page) {
+  this.page = new Page(parentElement);
   this.page.generate();
 }
 
